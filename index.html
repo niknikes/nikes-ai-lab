@@ -172,6 +172,12 @@ dialog[open]{animation:dlg .3s cubic-bezier(.2,.9,.3,1.3)}
   section{padding:44px 0}
   .faq details p{padding-right:0}
 }
+.cur{display:inline-flex;gap:4px;padding:4px;border-radius:999px;background:var(--surface)}
+.cur button{font:600 15px Onest,sans-serif;color:var(--text);background:transparent;border:0;border-radius:999px;padding:8px 14px;cursor:pointer;transition:background .2s,color .2s}
+.cur button[aria-pressed="true"]{background:var(--text);color:var(--bg)}
+.price .m{display:inline-block}
+.m.flip{animation:flip .35s ease-out}
+@keyframes flip{from{opacity:0;transform:translateY(-6px)}}
 </style>
 </head>
 <body>
@@ -186,7 +192,7 @@ dialog[open]{animation:dlg .3s cubic-bezier(.2,.9,.3,1.3)}
       <h1><span class="w" style="--i:0">Мультфильм</span> <span class="w" style="--i:1">про</span> <span class="w" style="--i:2">вас</span> <span class="w" style="--i:3">и</span> <span class="w" style="--i:4">ваших</span> <span class="w" style="--i:5">близких</span></h1>
       <p>Создаю ИИ-видео любого рода: мультфильмы-поздравления, рекламу, юмор, ролики для бизнеса и блога. Сценарий, озвучка и монтаж.</p>
       <button class="btn" data-order>Заказать мультфильм</button>
-      <small>От <span class="from">20</span> BYN · готово за 1–3 дня</small>
+      <small>От <span class="m from" data-byn="20">20 BYN</span> · готово за 1–3 дня</small>
     </div>
     <div class="window" role="img" aria-label="Обложка ролика «Тёща, приезжайте!»"><i class="ff" style="--x:12%;--d:7s;--s:0.0s;--dx:20px"></i><i class="ff" style="--x:28%;--d:9s;--s:1.5s;--dx:-15px"></i><i class="ff" style="--x:45%;--d:8s;--s:3.0s;--dx:25px"></i><i class="ff" style="--x:60%;--d:10s;--s:0.8s;--dx:-20px"></i><i class="ff" style="--x:75%;--d:7s;--s:2.4s;--dx:15px"></i><i class="ff" style="--x:88%;--d:9s;--s:4.0s;--dx:-25px"></i><i class="ff" style="--x:35%;--d:11s;--s:5.5s;--dx:10px"></i>
       <span class="wt">ТЁЩА,<br>ПРИЕЗЖАЙТЕ!</span>
@@ -211,14 +217,14 @@ dialog[open]{animation:dlg .3s cubic-bezier(.2,.9,.3,1.3)}
   </section>
 
   <section id="prices">
-    <div class="head"><h2>Сколько стоит</h2></div>
-    <div class="sale" id="sale"><p>Скидка 20 BYN на все пакеты до 20 октября</p><div class="cd"><span><b id="cD">0</b>дн</span><span><b id="cH">0</b>ч</span><span><b id="cM">0</b>мин</span><span><b id="cS">0</b>сек</span></div></div>
+    <div class="head"><h2>Сколько стоит</h2><div class="cur" role="group" aria-label="Валюта"><button type="button" data-c="BYN" aria-pressed="true">BYN</button><button type="button" data-c="RUB" aria-pressed="false">₽ RUB</button><button type="button" data-c="USD" aria-pressed="false">$ USD</button></div></div>
+    <div class="sale" id="sale"><p>Скидка на все пакеты до 20 октября</p><div class="cd"><span><b id="cD">0</b>дн</span><span><b id="cH">0</b>ч</span><span><b id="cM">0</b>мин</span><span><b id="cS">0</b>сек</span></div></div>
     <div class="prices">
-      <div class="price"><h3>Мини</h3><strong><s class="old" data-reg="40">40 BYN</s><span class="now" data-reg="40">20 BYN</span></strong><p>До 15 секунд</p></div>
-      <div class="price"><h3>Стандарт</h3><strong><s class="old" data-reg="50">50 BYN</s><span class="now" data-reg="50">30 BYN</span></strong><p>До 30 секунд</p></div>
-      <div class="price"><h3>Расширенный</h3><strong><s class="old" data-reg="70">70 BYN</s><span class="now" data-reg="70">50 BYN</span></strong><p>До 60 секунд</p></div>
+      <div class="price"><h3>Мини</h3><strong><s class="old m" data-byn="40">40 BYN</s><span class="now m" data-byn="20" data-reg="40">20 BYN</span></strong><p>До 15 секунд</p></div>
+      <div class="price"><h3>Стандарт</h3><strong><s class="old m" data-byn="50">50 BYN</s><span class="now m" data-byn="30" data-reg="50">30 BYN</span></strong><p>До 30 секунд</p></div>
+      <div class="price"><h3>Расширенный</h3><strong><s class="old m" data-byn="70">70 BYN</s><span class="now m" data-byn="50" data-reg="70">50 BYN</span></strong><p>До 60 секунд</p></div>
     </div>
-    <p class="note"><b>Правки без ограничений:</b> переделываю, пока вам не понравится.<br><b>Срок 1–3 дня</b> в зависимости от очереди.<br><b>Приоритет вне очереди:</b> +10 BYN.<br>Дольше минуты: +25 BYN за каждую следующую.</p>
+    <p class="note"><b>Правки без ограничений:</b> переделываю, пока вам не понравится.<br><b>Срок 1–3 дня</b> в зависимости от очереди.<br><b>Приоритет вне очереди:</b> +<span class="m" data-byn="10">10 BYN</span>.<br>Дольше минуты: +<span class="m" data-byn="25">25 BYN</span> за каждую следующую.</p>
   </section>
 
   <section id="how">
@@ -232,7 +238,7 @@ dialog[open]{animation:dlg .3s cubic-bezier(.2,.9,.3,1.3)}
 
   <section id="faq">
     <div class="head"><h2>Частые вопросы</h2></div>
-    <div class="faq"><details><summary>Что нужно от меня?</summary><p>Для кого видео и по какому поводу, пара фото героев, имена и 2–3 факта или смешные истории. Для рекламы: что продаёте, кому и куда пойдёт ролик. Остальное я придумаю сам и пришлю сценарий на согласование.</p></details><details><summary>А если результат не понравится?</summary><p>Переделываю, пока не понравится. Количество правок не ограничено.</p></details><details><summary>Сколько ждать?</summary><p>1–3 дня в зависимости от очереди. Если нужно срочно, есть приоритет вне очереди за +10 BYN.</p></details><details><summary>Как оплатить?</summary><p>Половина до начала работы, половина после того, как вы увидите готовое видео. Способ оплаты обсудим в переписке.</p></details><details><summary>Озвучка и музыка входят?</summary><p>Да. Сценарий, озвучка, музыка и монтаж входят в цену.</p></details><details><summary>Делаете видео для бизнеса?</summary><p>Да: рекламные ролики, видео для соцсетей, персонажи бренда, обучающие вставки. Примеры выше. Напишите задачу, и я предложу формат и цену.</p></details><details><summary>Покажете моё видео в портфолио?</summary><p>Только с вашего согласия. Если видео личное, оно останется только у вас.</p></details></div>
+    <div class="faq"><details><summary>Что нужно от меня?</summary><p>Для кого видео и по какому поводу, пара фото героев, имена и 2–3 факта или смешные истории. Для рекламы: что продаёте, кому и куда пойдёт ролик. Остальное я придумаю сам и пришлю сценарий на согласование.</p></details><details><summary>А если результат не понравится?</summary><p>Переделываю, пока не понравится. Количество правок не ограничено.</p></details><details><summary>Сколько ждать?</summary><p>1–3 дня в зависимости от очереди. Если нужно срочно, есть приоритет вне очереди за +<span class="m" data-byn="10">10 BYN</span>.</p></details><details><summary>Как оплатить?</summary><p>Половина до начала работы, половина после того, как вы увидите готовое видео. Способ оплаты обсудим в переписке.</p></details><details><summary>Озвучка и музыка входят?</summary><p>Да. Сценарий, озвучка, музыка и монтаж входят в цену.</p></details><details><summary>Делаете видео для бизнеса?</summary><p>Да: рекламные ролики, видео для соцсетей, персонажи бренда, обучающие вставки. Примеры выше. Напишите задачу, и я предложу формат и цену.</p></details><details><summary>Покажете моё видео в портфолио?</summary><p>Только с вашего согласия. Если видео личное, оно останется только у вас.</p></details></div>
   </section>
 
   <div class="cta">
@@ -282,8 +288,8 @@ var S=document.getElementById('cS');
 function over(){
   var sl=document.getElementById('sale');if(sl)sl.remove();
   document.querySelectorAll('.old').forEach(function(e){e.remove()});
-  document.querySelectorAll('.now').forEach(function(e){e.textContent=e.dataset.reg+' BYN'});
-  var f=document.querySelector('.from');if(f)f.textContent='40';
+  document.querySelectorAll('.now').forEach(function(e){e.dataset.byn=e.dataset.reg});
+  var f=document.querySelector('.from');if(f)f.dataset.byn='40';if(window.renderMoney)renderMoney();
 }
 function tick(){
   var t=end-Date.now();
@@ -308,6 +314,33 @@ if(!R&&matchMedia('(hover:hover)').matches){
     c.addEventListener('pointerleave',function(){c.style.transform=''});
   });
 }
+})();
+</script>
+<script>
+(function(){
+  /* Красивые цены. Ключ: цена в BYN, значение: цена в валюте. */
+  var TABLE={
+    RUB:{10:290,20:590,25:690,30:890,40:1190,50:1390,70:1990},
+    USD:{10:4,20:7,25:9,30:10,40:14,50:17,70:24}
+  };
+  function fmt(v,c){
+    if(c==='RUB'){var x=TABLE.RUB[v];return String(x).replace(/\B(?=(\d{3})+(?!\d))/g,'\u00a0')+'\u00a0₽'}
+    if(c==='USD'){return '$'+TABLE.USD[v]}
+    return v+'\u00a0BYN';
+  }
+  var cur='BYN';
+  try{var sv=localStorage.getItem('cur');if(sv)cur=sv;else{var tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'';if(/^(Europe\/(Moscow|Samara|Kaliningrad|Volgograd|Kirov|Astrakhan|Saratov|Ulyanovsk|Simferopol)|Asia\/(Yekaterinburg|Omsk|Novosibirsk|Barnaul|Tomsk|Novokuznetsk|Krasnoyarsk|Irkutsk|Chita|Yakutsk|Khandyga|Vladivostok|Ust-Nera|Magadan|Sakhalin|Srednekolymsk|Kamchatka|Anadyr))$/.test(tz))cur='RUB';else if(tz&&tz!=='Europe/Minsk'&&!/^(Europe|Asia)\//.test(tz))cur='USD';}}catch(e){}
+  window.renderMoney=function(anim){
+    document.querySelectorAll('.m').forEach(function(e){
+      var v=+e.dataset.byn;e.textContent=fmt(v,cur);
+      if(anim){e.classList.remove('flip');void e.offsetWidth;e.classList.add('flip')}
+    });
+    document.querySelectorAll('.cur button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.c===cur)});
+  };
+  document.querySelectorAll('.cur button').forEach(function(b){b.addEventListener('click',function(){
+    cur=b.dataset.c;try{localStorage.setItem('cur',cur)}catch(e){}renderMoney(true);
+  })});
+  renderMoney();
 })();
 </script>
 </body>
