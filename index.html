@@ -52,6 +52,7 @@ a{color:inherit}
 dialog{border:0;border-radius:28px;background:var(--bg);color:var(--text);padding:28px;width:min(92vw,380px);text-align:center}
 dialog.vid{padding:0;width:min(94vw,420px);background:#000;border-radius:24px;overflow:hidden;position:fixed;inset:0;margin:auto;max-height:94vh}
 dialog.vid video{display:block;width:100%;aspect-ratio:9/16;max-height:80vh;object-fit:contain;background:#000}
+dialog.vid .verr{background:#E2573A;color:#fff}dialog.vid .verr a{color:#fff;font-weight:600}
 dialog.vid p{margin:0;padding:12px 18px;color:#FFF0DA;font:600 16px Onest,sans-serif;text-align:left;background:#1b1410}
 .vx{position:absolute;top:10px;right:10px;z-index:5;width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:#2B1B10;font-size:18px;cursor:pointer}
 dialog::backdrop{background:rgba(20,14,10,.6)}
@@ -244,6 +245,7 @@ dialog[open]{animation:dlg .3s cubic-bezier(.2,.9,.3,1.3)}
   <button class="vx" type="button" data-vclose aria-label="Закрыть видео">✕</button>
   <video id="pv" controls playsinline preload="none"></video>
   <p id="pt"></p>
+  <p class="verr" id="verr" hidden>Видео не загрузилось. <a href="https://instagram.com/nikes.ai.lab" target="_blank" rel="noopener">Посмотреть в Instagram</a></p>
 </dialog>
 <dialog id="pick" aria-labelledby="pickT">
   <h3 id="pickT">Где удобнее написать?</h3>
@@ -260,11 +262,12 @@ document.querySelectorAll('.chips button').forEach(function(b){
 });
 var pl=document.getElementById('player'),pv=document.getElementById('pv'),pt=document.getElementById('pt');
 document.querySelectorAll('.card[data-title]').forEach(function(c){c.addEventListener('click',function(e){
-  e.preventDefault();pv.src=c.getAttribute('href');var im=c.querySelector('img');if(im)pv.poster=im.src;pt.textContent=c.dataset.title;pl.showModal();goal('video_play');
+  e.preventDefault();document.getElementById('verr').hidden=true;pv.src=c.getAttribute('href');var im=c.querySelector('img');if(im)pv.poster=im.src;pt.textContent=c.dataset.title;pl.showModal();goal('video_play');
   var r=pv.play();if(r&&r.catch)r.catch(function(){});
 })});
 function closeP(){pv.pause();pv.removeAttribute('src');pv.load()}
 pl.addEventListener('close',closeP);
+pv.addEventListener('error',function(){if(pv.getAttribute('src'))document.getElementById('verr').hidden=false});
 pl.addEventListener('click',function(e){if(e.target===pl||e.target.hasAttribute('data-vclose'))pl.close()});
 var d=document.getElementById('pick');
 document.querySelectorAll('[data-order]').forEach(function(b){b.addEventListener('click',function(){d.showModal();goal('open_contact')})});
