@@ -51,7 +51,7 @@ a{color:inherit}
 .btn{border:0;cursor:pointer}
 dialog{border:0;border-radius:28px;background:var(--bg);color:var(--text);padding:28px;width:min(92vw,380px);text-align:center}
 dialog.vid{padding:0;width:min(94vw,420px);background:#000;border-radius:24px;overflow:hidden;position:fixed;inset:0;margin:auto;max-height:94vh}
-dialog.vid video{display:block;width:100%;max-height:82vh;background:#000}
+dialog.vid video{display:block;width:100%;aspect-ratio:9/16;max-height:80vh;object-fit:contain;background:#000}
 dialog.vid p{margin:0;padding:12px 18px;color:#FFF0DA;font:600 16px Onest,sans-serif;text-align:left;background:#1b1410}
 .vx{position:absolute;top:10px;right:10px;z-index:5;width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:#2B1B10;font-size:18px;cursor:pointer}
 dialog::backdrop{background:rgba(20,14,10,.6)}
@@ -158,6 +158,18 @@ dialog[open]{animation:dlg .3s cubic-bezier(.2,.9,.3,1.3)}
 .faq details p{margin:0;padding:0 50px 20px 0;color:var(--muted);max-width:62ch}
 .faq details[open] p{animation:faqIn .35s ease-out}
 @keyframes faqIn{from{opacity:0;transform:translateY(-6px)}}
+@media (max-width:600px){
+  .grid{grid-template-columns:1fr 1fr;gap:12px}
+  .card{padding:12px;border-radius:18px}
+  .card h3{font-size:17px}
+  .card em{font-size:11px;margin-top:4px}
+  .play{width:34px;height:34px;top:10px;right:10px}
+  .play::after{border-left-width:11px;border-top-width:7px;border-bottom-width:7px;margin-left:3px}
+  .window{max-width:230px}
+  .hero{gap:28px}
+  section{padding:44px 0}
+  .faq details p{padding-right:0}
+}
 </style>
 </head>
 <body>
@@ -210,7 +222,7 @@ dialog[open]{animation:dlg .3s cubic-bezier(.2,.9,.3,1.3)}
   <section id="how">
     <div class="head"><h2>Как заказать</h2></div>
     <ol class="steps">
-      <li><b>Напишите в Telegram</b><span>Для кого мультфильм и по какому поводу.</span></li>
+      <li><b>Напишите мне</b><span>В Telegram или директ Instagram: для кого видео и по какому поводу.</span></li>
       <li><b>Пришлите фото и факты</b><span>Имена, пара шуток или историй про героя.</span></li>
       <li><b>Получите видео</b><span>За 1–3 дня в зависимости от очереди, быстрее с приоритетом. Правки без ограничений. Оплата: половина до начала, половина после.</span></li>
     </ol>
@@ -248,7 +260,7 @@ document.querySelectorAll('.chips button').forEach(function(b){
 });
 var pl=document.getElementById('player'),pv=document.getElementById('pv'),pt=document.getElementById('pt');
 document.querySelectorAll('.card[data-title]').forEach(function(c){c.addEventListener('click',function(e){
-  e.preventDefault();pv.src=c.getAttribute('href');pt.textContent=c.dataset.title;pl.showModal();goal('video_play');
+  e.preventDefault();pv.src=c.getAttribute('href');var im=c.querySelector('img');if(im)pv.poster=im.src;pt.textContent=c.dataset.title;pl.showModal();goal('video_play');
   var r=pv.play();if(r&&r.catch)r.catch(function(){});
 })});
 function closeP(){pv.pause();pv.removeAttribute('src');pv.load()}
