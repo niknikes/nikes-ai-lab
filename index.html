@@ -224,7 +224,7 @@ dialog[open]{animation:dlg .3s cubic-bezier(.2,.9,.3,1.3)}
       <div class="price"><h3>Стандарт</h3><strong><s class="old m" data-byn="50">50 BYN</s><span class="now m" data-byn="30" data-reg="50">30 BYN</span></strong><p>До 30 секунд</p></div>
       <div class="price"><h3>Расширенный</h3><strong><s class="old m" data-byn="70">70 BYN</s><span class="now m" data-byn="50" data-reg="70">50 BYN</span></strong><p>До 60 секунд</p></div>
     </div>
-    <p class="note"><b>Правки без ограничений:</b> переделываю, пока вам не понравится.<br><b>Срок 1–3 дня</b> в зависимости от очереди.<br><b>Приоритет вне очереди:</b> +<span class="m" data-byn="10">10 BYN</span>.<br>Дольше минуты: +<span class="m" data-byn="25">25 BYN</span> за каждую следующую.</p>
+    <p class="note"><b>Правки без ограничений:</b> переделываю, пока вам не понравится.<br><b>Срок 1–3 дня</b> в зависимости от очереди.<br><b>Приоритет вне очереди:</b> +<span class="m" data-byn="10">10 BYN</span>.<br>Дольше минуты: +<span class="m" data-byn="35">35 BYN</span> за каждую следующую.</p>
   </section>
 
   <section id="how">
@@ -320,8 +320,8 @@ if(!R&&matchMedia('(hover:hover)').matches){
 (function(){
   /* Красивые цены. Ключ: цена в BYN, значение: цена в валюте. */
   var TABLE={
-    RUB:{10:290,20:590,25:690,30:890,40:1190,50:1390,70:1990},
-    USD:{10:4,20:7,25:9,30:10,40:14,50:17,70:24}
+    RUB:{10:290,20:590,25:690,35:990,30:890,40:1190,50:1390,70:1990},
+    USD:{10:4,20:7,25:9,35:12,30:10,40:14,50:17,70:24}
   };
   function fmt(v,c){
     if(c==='RUB'){var x=TABLE.RUB[v];return String(x).replace(/\B(?=(\d{3})+(?!\d))/g,'\u00a0')+'\u00a0₽'}
