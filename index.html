@@ -72,9 +72,10 @@ header .btn{padding:9px 18px;font-size:15px}
 .window{position:relative;aspect-ratio:3/4;max-width:340px;justify-self:center;width:100%;
   border-radius:999px 999px 28px 28px;border:6px solid var(--line);
   background:radial-gradient(circle at 50% 70%,var(--lamp) 0,color-mix(in srgb,var(--lamp) 40%,var(--surface)) 45%,var(--surface) 80%);
-  display:grid;place-items:center;text-align:center;padding:30px;overflow:hidden;animation:lightOn 1.4s ease-out both}
-.window span{font:800 clamp(34px,5vw,48px)/1 Rubik,sans-serif;color:var(--on-lamp);transform:rotate(-4deg)}
-.sticker{position:absolute;right:-6px;bottom:26px;background:var(--accent);color:#fff;font:600 14px Onest,sans-serif;padding:8px 14px;border-radius:14px;transform:rotate(5deg)}
+  display:grid;place-items:center;text-align:center;padding:30px 14px;overflow:hidden;animation:lightOn 1.4s ease-out both}
+.window{container-type:inline-size}
+.window .wt{display:block;width:100%;font:800 10.5cqi/1.05 Rubik,sans-serif;color:var(--on-lamp);text-align:center;white-space:nowrap;letter-spacing:-.01em}
+.sticker{position:absolute;right:14px;bottom:26px;background:var(--accent);color:#fff;font:600 14px Onest,sans-serif;padding:8px 14px;border-radius:14px;transform:rotate(5deg)}
 @keyframes lightOn{from{filter:brightness(.45)}to{filter:brightness(1)}}
 
 section{padding:56px 0}
@@ -117,8 +118,8 @@ footer{padding:0 0 36px;color:var(--muted);font-size:15px;text-align:center}
 @keyframes wordIn{from{opacity:0;transform:translateY(.5em) rotate(3deg)}to{opacity:1;transform:none}}
 .window::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 78%,rgba(255,225,150,.6),transparent 62%);animation:glow 4s ease-in-out infinite;pointer-events:none}
 @keyframes glow{0%,100%{opacity:.4}50%{opacity:1}}
-.window span{position:relative;z-index:2;animation:bob 5s ease-in-out infinite}
-@keyframes bob{0%,100%{transform:rotate(-4deg) translateY(0)}50%{transform:rotate(-3deg) translateY(-8px)}}
+.window .wt{position:relative;z-index:2;animation:bob 5s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 .ff{position:absolute;z-index:1;left:var(--x);bottom:-10px;width:6px;height:6px;border-radius:50%;background:#fff6c9;box-shadow:0 0 10px 3px rgba(255,220,120,.8);opacity:0;animation:rise var(--d) linear infinite;animation-delay:var(--s)}
 @keyframes rise{0%{transform:translate(0,0);opacity:0}15%{opacity:1}100%{transform:translate(var(--dx),-420px);opacity:0}}
 .sticker{z-index:3;animation:wob 3s ease-in-out infinite}
@@ -188,7 +189,7 @@ dialog[open]{animation:dlg .3s cubic-bezier(.2,.9,.3,1.3)}
       <small>От <span class="from">20</span> BYN · готово за 1–3 дня</small>
     </div>
     <div class="window" role="img" aria-label="Обложка ролика «Тёща, приезжайте!»"><i class="ff" style="--x:12%;--d:7s;--s:0.0s;--dx:20px"></i><i class="ff" style="--x:28%;--d:9s;--s:1.5s;--dx:-15px"></i><i class="ff" style="--x:45%;--d:8s;--s:3.0s;--dx:25px"></i><i class="ff" style="--x:60%;--d:10s;--s:0.8s;--dx:-20px"></i><i class="ff" style="--x:75%;--d:7s;--s:2.4s;--dx:15px"></i><i class="ff" style="--x:88%;--d:9s;--s:4.0s;--dx:-25px"></i><i class="ff" style="--x:35%;--d:11s;--s:5.5s;--dx:10px"></i>
-      <span>ТЁЩА, ПРИЕЗЖАЙТЕ!</span>
+      <span class="wt">ТЁЩА,<br>ПРИЕЗЖАЙТЕ!</span>
       <div class="sticker">38 500 просмотров</div>
     </div>
   </div>
