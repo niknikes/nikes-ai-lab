@@ -233,7 +233,7 @@ footer{line-height:1.9}
 
   <section id="prices">
     <div class="head"><h2>Сколько стоит</h2><div class="cur" role="group" aria-label="Валюта"><button type="button" data-c="BYN" aria-pressed="true">BYN</button><button type="button" data-c="RUB" aria-pressed="false">₽ RUB</button><button type="button" data-c="USD" aria-pressed="false">$ USD</button></div></div>
-    <div class="sale" id="sale"><p>Скидка на все пакеты до 20 октября</p><div class="cd"><span><b id="cD">0</b>дн</span><span><b id="cH">0</b>ч</span><span><b id="cM">0</b>мин</span><span><b id="cS">0</b>сек</span></div></div>
+    <div class="sale" id="sale"><p>Скидка на все пакеты до 31 октября</p><div class="cd"><span><b id="cD">0</b>дн</span><span><b id="cH">0</b>ч</span><span><b id="cM">0</b>мин</span><span><b id="cS">0</b>сек</span></div></div>
     <div class="prices">
       <div class="price"><h3>Мини</h3><strong><s class="old m" data-byn="40">40 BYN</s><span class="now m" data-byn="20" data-reg="40">20 BYN</span></strong><p>До 15 секунд</p></div>
       <div class="price"><h3>Стандарт</h3><strong><s class="old m" data-byn="50">50 BYN</s><span class="now m" data-byn="30" data-reg="50">30 BYN</span></strong><p>До 30 секунд</p></div>
@@ -300,7 +300,7 @@ d.addEventListener('click',function(e){if(e.target===d||e.target.hasAttribute('d
 <script>
 (function(){
 var R=matchMedia('(prefers-reduced-motion:reduce)').matches;
-var end=new Date(2026,9,20,23,59,59).getTime();
+var end=new Date(2026,9,31,23,59,59).getTime();
 var S=document.getElementById('cS');
 function over(){
   var sl=document.getElementById('sale');if(sl)sl.remove();
